@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid red;
+    border-collapse: collapse;
+}
+tr,
+td,
+th {
+    border: 1px solid red;
+}
+input {
+    padding: 5px;
+    margin: 10px 0;
+    width: 80%;
+}
+button[type="submit"] {
+    padding: 5px;
+}
