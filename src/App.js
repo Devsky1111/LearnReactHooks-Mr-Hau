@@ -6,6 +6,9 @@ import Todolist2 from './Components/Todolist/todolist2';
 import Addtodo from './Components/Todolist/Addtodo';
 import { useState } from "react";
 import TodolistRedux from './Components/Todolist/todolistRedux';
+import TestUseeffect from './useEffecttest'
+import { useEffect } from 'react';
+
 const data = [
   { id: 1, name: "Trung", age: 27 },
   { id: 2, name: "Quang", age: 35 },
@@ -25,6 +28,26 @@ function App() {
     var data1 = [...data]
     return setList(data1)
   }
+  const [postList, setpostList] = useState([])
+
+  useEffect(() => {
+    async function fetchPostList() {
+      //...
+      try {
+        const requestUrl = 'http://js-post-apposts?_limit=10&_page=1 i.herokuapp.com/api/';
+        const response = await fetch(requestUrl)
+        const responseJSON = await response.json()
+        console.log({ responseJSON })
+        const { data } = responseJSON
+        setpostList(data)
+      } catch (error) {
+        console.log("LOI", error.message)
+      }
+
+    }
+    fetchPostList()
+
+  }, []) // [] de chi chay 1 lan
 
   function handleSubmitAdd(valuefromAddtodo) {
     data.push(valuefromAddtodo)
@@ -46,6 +69,7 @@ function App() {
         truyenvetutodolist2={handleClickfromTodolist}
       />
       <TodolistRedux />
+      <TestUseeffect />
     </div>
   );
 }

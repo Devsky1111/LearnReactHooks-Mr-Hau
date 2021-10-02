@@ -17,9 +17,9 @@ function Addtodo(props) {
             name: valueInputName,
             age: valueInputAge
         }
-        // redux
+        // redux Addtodo trong dong code duoi nay
         props.dispatchAddtodo(onFormvalue)
-
+        // redux den day
 
 
 

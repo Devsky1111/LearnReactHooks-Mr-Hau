@@ -10,6 +10,13 @@ var todolistReducer = (state = initialState, action) => {
             console.log(action)
             state.push(action.todo)
             return [...state]
+        case "REMOVE_TODO":
+            console.log(action)
+            var index = state.findIndex((ele, index) => { return ele.id === action.todoremove.id })
+            console.log(index)
+            state.splice(index, 1)
+            return [...state]
+
         default:
             console.log("default")
             return state

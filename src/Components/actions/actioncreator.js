@@ -4,3 +4,10 @@ export var addtodo = (todo) => {
         todo: todo
     }
 }
+
+export var removetodo = (todoremove) => {
+    return {
+        type: "REMOVE_TODO",
+        todoremove: todoremove
+    }
+}

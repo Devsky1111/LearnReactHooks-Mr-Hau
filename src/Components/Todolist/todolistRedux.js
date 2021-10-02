@@ -1,12 +1,17 @@
 import { connect } from "react-redux";
 import React from 'react'
-function TodolistRedux({ listfromredux }) {
+import { removetodo } from './../actions/actioncreator'
 
+function TodolistRedux({ listfromredux, removeTodo }) {
+    function removeTodofromreact(ele) {
+        removeTodo(ele)
+    }
     console.log(listfromredux)
     var listrender = listfromredux.map((ele, index) => {
         return (
             <tr
                 key={index}
+                onClick={() => { removeTodofromreact(ele) }}
             >
                 <td>{index + 1}</td>
                 <td>{ele.name}</td>
@@ -39,6 +44,13 @@ var mapStateToProps = (state, props) => {
         listfromredux: state.showtodo
     }
 }
+var mapDispatchToProps = (dispatch) => {
+    return {
+        removeTodo: (ele) => {
+            return dispatch(removetodo(ele))
+        }
+    }
+}
 
 
-export default connect(mapStateToProps, null)(TodolistRedux)
+export default connect(mapStateToProps, mapDispatchToProps)(TodolistRedux)
